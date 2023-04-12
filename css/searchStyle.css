@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Kadwa&display=swap');
+
 body {
     background-image: url("/assets/backgrounds/searchBg.png");
     background-repeat: no-repeat;
     background-size: cover;
     height: 100%;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Kadwa', serif;
 }
 
 h3 {
@@ -48,4 +50,76 @@ h3 {
 
 .containerResults {
     padding: 30px;
+}
+
+.linkToDesc {
+    text-decoration: none;
+    color:rgb(0, 0, 0);
+}
+
+.containerItem {
+    background-color: white;
+    border-radius: 8px;
+    width: 300px;
+}
+
+.containerItem img {
+    width: 300px;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+}
+
+.iconHeart {
+    position: absolute;
+    color:rgb(240, 18, 47);
+    margin: 10px;
+}
+
+.descCont {
+    padding: 0px 15px 15px 15px;
+}
+
+.titleDiv{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.iconVideo, .iconSpeaker {
+    color:rgb(102, 86, 173);
+    font-size: 1.2em;
+}
+
+.containerContent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.timerDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.iconTimer {
+    font-size: 1.2em;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.timerDiv div {
+    font-size: 0.8em;
+}
+
+.gradeDiv span {
+    color: rgb(255, 218, 7);
+    font-size: 2em;
+}
+
+.iconPlay {
+    color:rgb(102, 86, 173);
+    font-size: 3em;
 }
