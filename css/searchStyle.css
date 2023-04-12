@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Kadwa&display=swap');
+
+body {
+    background-image: url("/assets/backgrounds/searchBg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    font-family: 'Kadwa', serif;
+}
+
+h3 {
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.containerPage {
+    padding: 30px;
+}
+
+.containerSearch {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    border-radius: 100px;
+    align-items: center;
+    width: 300px;
+    justify-content: space-between;
+    padding: 10px;
+    position: absolute;
+    right: 40px;
+}
+
+.containerSearch div {
+    padding-left: 10px;
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48
+}
+
+  .iconSearch{
+    color: rgb(0, 0, 0);   
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.containerResults {
+    padding: 30px;
+}
+
+.linkToDesc {
+    text-decoration: none;
+    color:rgb(0, 0, 0);
+}
+
+.containerItem {
+    background-color: white;
+    border-radius: 8px;
+    width: 300px;
+}
+
+.containerItem img {
+    width: 300px;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+}
+
+.iconHeart {
+    position: absolute;
+    color:rgb(240, 18, 47);
+    margin: 10px;
+}
+
+.descCont {
+    padding: 0px 15px 15px 15px;
+}
+
+.titleDiv{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.iconVideo, .iconSpeaker {
+    color:rgb(102, 86, 173);
+    font-size: 1.2em;
+}
+
+.containerContent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.timerDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.iconTimer {
+    font-size: 1.2em;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.timerDiv div {
+    font-size: 0.8em;
+}
+
+.gradeDiv span {
+    color: rgb(255, 218, 7);
+    font-size: 2em;
+}
+
+.iconPlay {
+    color:rgb(102, 86, 173);
+    font-size: 3em;
+}
