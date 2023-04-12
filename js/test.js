@@ -27,11 +27,14 @@ const trad = {
   Pointing_Up:"Pointe le ciel",
   Victory : "En V",
   ILoveYou:"ROOOOOOCK"
-
-
-
 };
 
+let recette = {
+  1: "Ajouter eau",
+  2: "Ajouter lait",
+  3: "Ajouter farine",
+  4: "Ajouter patate",
+}
 
 async function runDemo() {
   const vision = await FilesetResolver.forVisionTasks(
@@ -91,7 +94,8 @@ function enableCam(event) {
     video.addEventListener("loadeddata", predictWebcam);
   });
 }
-
+ var nbetat = false;
+ 
 btn.addEventListener('click',function(){
     const video = document.querySelector('video');
     const mediaStream = video.srcObject;  
@@ -101,6 +105,7 @@ btn.addEventListener('click',function(){
     videodiv.style.display = "none";
 })
 async function predictWebcam() {
+  var y = 0;
   const webcamElement = document.getElementById("webcam");
   // Now let's start detecting the stream.
   if (runningMode === "IMAGE") {
@@ -128,15 +133,26 @@ async function predictWebcam() {
   if (results.gestures.length > 0) {
     gestureOutput.style.display = "block";
     gestureOutput.style.width = videoWidth;
-    gestureOutput.innerText =
-      "Geste en cours: " +
-      trad[results.gestures[0][0].categoryName] +
-      "\n Précision: " +
-      Math.round(parseFloat(results.gestures[0][0].score) * 100) +
-      "%";
+    // gestureOutput.innerText =
+    //   "Geste en cours: " +
+    //   trad[results.gestures[0][0].categoryName] +
+    //   "\n Précision: " +
+    //   Math.round(parseFloat(results.gestures[0][0].score) * 100) +
+    //   "%";
+    if(results.gestures[0][0].categoryName=="Thumb_Up"){
+      setTimeout(function(){
+      gestureOutput.innerText = recette[y+1]
+      console.log(recette[y+1])
+      y = y+1;
+      },5000)
+      
+    }
+ 
   } else {
     gestureOutput.style.display = "none";
   }
+
+ 
 
   // Call this function again to keep predicting when the browser is ready.
   if (webcamRunning === true) {
