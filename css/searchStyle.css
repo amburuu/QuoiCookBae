@@ -3,4 +3,49 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h3 {
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.containerPage {
+    padding: 30px;
+}
+
+.containerSearch {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    border-radius: 100px;
+    align-items: center;
+    width: 300px;
+    justify-content: space-between;
+    padding: 10px;
+    position: absolute;
+    right: 40px;
+}
+
+.containerSearch div {
+    padding-left: 10px;
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48
+}
+
+  .iconSearch{
+    color: rgb(0, 0, 0);   
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.containerResults {
+    padding: 30px;
 }
