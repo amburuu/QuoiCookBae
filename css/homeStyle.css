@@ -1,7 +1,6 @@
 body {
     background-image: url("/assets/backgrounds/homeBg.png");
     background-repeat: no-repeat;
-    background-position: center;
     background-size: cover;
     height: 100%;
 }
