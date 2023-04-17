@@ -10,6 +10,24 @@
     <title>Recipe</title>
     <link rel="stylesheet" href="../css/recipeStyle.css">
     <link rel="stylesheet" href="../css/generalStyle.css">
+    <script src="../assets/js/test.js" type="module"></script>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"
+      crossorigin="anonymous"
+    ></script>
 </head>
 
 <body>
@@ -17,8 +35,8 @@
         <div class="logoTitle">QuoiCookBae</div>
         <div class="containerViewRecipe">
             <div class="recipeSteps">
-                <div class="titleStep">Etape 1:</div>
-                <div class="subTitleStep">Enrober le donut sucré au sucre avec du sucre</div>
+                <div id="titleStep" class="titleStep">Etape 1:</div>
+                <div id="subTitleStep" class="subTitleStep">Enrober le donut sucré au sucre avec du sucre</div>
             </div>
             <div class="containerRight">
                 <div class="parameterBtns">
@@ -26,13 +44,34 @@
                         volume_off
                     </span>
                     <span class="material-symbols-rounded">
-                        videocam
+                        <button id="webcamButton" class="mdc-button mdc-button--raised">
+                            <span class="mdc-button__ripple"></span>
+                            <span class="mdc-button__label"
+                              ><i class="bx bx-camera bx-md" style="font-size: 24px" id="camon"></i
+                              ><i class="bx bx-camera-off bx-md" id="camoff"></i
+                            ></span>
+                          </button>
                     </span>
                     <span class="material-symbols-rounded">
                         mic
                     </span>
                 </div>
-                <div class="videoSpace">Video</div>
+                <div class="videoSpace">
+                    <div id="liveView" class="videoView">
+                        <span id="etat"></span>
+                        <div id="demos"></div>
+                  
+                        <div id="webcamviewer" class="webcamviewer" style="position: relative">
+                          <video id="webcam" width="500" height="300" autoplay style="transform: scaleX(-1)"></video>
+                          <canvas
+                            class="output_canvas"
+                            id="output_canvas"
+                            style="position: absolute; left: 0px; top: 0px"
+                          ></canvas>
+                          <p id="gesture_output" class="output"></p>
+                        </div>
+                      </div>
+                </div>
             </div>
 
 
