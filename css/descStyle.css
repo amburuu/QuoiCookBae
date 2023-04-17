@@ -87,17 +87,24 @@ body {
     color:white;
     background-color: gray;
     margin-right: 10px;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
 }
 
 #btnPlay{
     width: 75px;
     height: 75px;
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 50%;
+    text-decoration: none;
+    color: white;
 }
 
 #iconPlay{
-    font-size: 3em;
+    font-size: 3em
 }
 
 #infosContainer{
