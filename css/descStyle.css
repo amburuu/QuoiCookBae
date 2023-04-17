@@ -90,6 +90,7 @@ body {
     text-decoration: none;
     justify-content: center;
     align-items: center;
+    padding: 5px;
 }
 
 #btnPlay{
@@ -120,5 +121,7 @@ body {
     height: 300px;
     display: flex;
     flex-direction: column;
-    
+    padding-left: 25px;
+    padding-top: 20px;
+
 }
