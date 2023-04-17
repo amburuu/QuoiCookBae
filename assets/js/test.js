@@ -8,11 +8,24 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+let recettediv = document.getElementById("subTitleStep");
+let etapediv = document.getElementById("titleStep");
+
+const SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
+const SpeechGrammarList = window.SpeechGrammarList || webkitSpeechGrammarList;
+const SpeechRecognitionEvent =
+  window.SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
+
+var recognition = new SpeechRecognition();
+recognition.lang = "fr-FR";
+recognition.interimResults = false;
+recognition.maxAlternatives = 1;
+recognition.continiuous = true;
+recognition.start();
+
 import vision from "https://cdn.skypack.dev/@mediapipe/tasks-vision@latest";
 const { GestureRecognizer, FilesetResolver } = vision;
 const demosSection = document.getElementById("demos");
-let recettediv = document.getElementById("subTitleStep");
-let etapediv = document.getElementById("titleStep");
 
 let gestureRecognizer;
 let runningMode = "IMAGE";
@@ -60,6 +73,27 @@ let recette = {
   6: "Ajouter 1 cuillère à soupe de vanille liquide",
   7: "Mélanger le tout",
   8: "Votre Tacos 3 viandes est prêt !",
+};
+
+recognition.onend = function () {
+  recognition.start();
+};
+
+recognition.onresult = function (event) {
+  var sentence = event.results[0][0].transcript;
+  console.log("Resultat : " + sentence + ".");
+  console.log("Indice de confiance : " + event.results[0][0].confidence);
+  if (sentence == "suivant") {
+    if (y < sizeOfArray(recette)) {
+      y++;
+      EtapeSuivante(y);
+    }
+  }
+  // recettediv.innerText = sentence[0].toUpperCase() + sentence.slice(1) + ". ";
+};
+
+recognition.onerror = function (event) {
+  console.log("Erreur : " + event.error);
 };
 
 async function runDemo() {
