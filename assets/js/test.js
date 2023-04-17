@@ -11,7 +11,8 @@
 import vision from "https://cdn.skypack.dev/@mediapipe/tasks-vision@latest";
 const { GestureRecognizer, FilesetResolver } = vision;
 const demosSection = document.getElementById("demos");
-let recettediv = document.getElementById("etape-recette");
+let recettediv = document.getElementById("subTitleStep");
+let etapediv = document.getElementById("titleStep");
 
 let gestureRecognizer;
 let runningMode = "IMAGE";
@@ -19,8 +20,8 @@ let enableWebcamButton;
 let webcamRunning = false;
 let videodiv = document.getElementById("webcamviewer");
 
-const videoHeight = 700;
-const videoWidth = 700;
+const videoHeight = 500;
+const videoWidth = 300;
 
 const trad = {
   None: "Aucun geste reconnu",
@@ -222,4 +223,5 @@ function EtapeSuivante(y) {
   let etape = recette[y];
 
   recettediv.innerText = etape;
+  etapediv.innerText = "Etape " + y + "/" + max_y;
 }
