@@ -1,5 +1,5 @@
 body {
-    background-image: url("/assets/backgrounds/descBg.png");
+    background-image: url("../assets/backgrounds/descBg.png");
     background-repeat: no-repeat;
     background-size: cover;
     height: 100%;
