@@ -87,17 +87,25 @@ body {
     color:white;
     background-color: gray;
     margin-right: 10px;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
 }
 
 #btnPlay{
     width: 75px;
     height: 75px;
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 50%;
+    text-decoration: none;
+    color: white;
 }
 
 #iconPlay{
-    font-size: 3em;
+    font-size: 3em
 }
 
 #infosContainer{
@@ -111,4 +119,9 @@ body {
     background-color: white;
     width: 300px;
     height: 300px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 25px;
+    padding-top: 20px;
+
 }
