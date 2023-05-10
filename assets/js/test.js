@@ -8,17 +8,30 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+let recettediv = document.getElementById("subTitleStep");
+let etapediv = document.getElementById("titleStep");
+
+const SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
+const SpeechGrammarList = window.SpeechGrammarList || webkitSpeechGrammarList;
+const SpeechRecognitionEvent =
+  window.SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
+
+var recognition = new SpeechRecognition();
+recognition.lang = "fr-FR";
+recognition.interimResults = false;
+recognition.maxAlternatives = 1;
+recognition.continiuous = false;
+
 import vision from "https://cdn.skypack.dev/@mediapipe/tasks-vision@latest";
 const { GestureRecognizer, FilesetResolver } = vision;
 const demosSection = document.getElementById("demos");
-let recettediv = document.getElementById("subTitleStep");
-let etapediv = document.getElementById("titleStep");
 
 let gestureRecognizer;
 let runningMode = "IMAGE";
 let enableWebcamButton;
 let webcamRunning = false;
 let videodiv = document.getElementById("webcamviewer");
+let retour = document.getElementById("retour");
 
 const videoHeight = 500;
 const videoWidth = 300;
@@ -62,6 +75,35 @@ let recette = {
   8: "Votre Tacos 3 viandes est prêt !",
 };
 
+recognition.onend = function () {
+  recognition.start();
+};
+
+recognition.onresult = function (event) {
+  var sentence = event.results[0][0].transcript;
+  console.log("Resultat : " + sentence + ".");
+  console.log("Indice de confiance : " + event.results[0][0].confidence);
+  if (sentence.indexOf("suivant") > -1) {
+    if (y < sizeOfArray(recette)) {
+      y++;
+      EtapeSuivante(y);
+      retour.innerHTML = sentence[0].toUpperCase() + sentence.slice(1) + ". ";
+    }
+  } else if (sentence.indexOf("précédent") > -1) {
+    if (y > 1) {
+      y--;
+      EtapeSuivante(y);
+      retour.innerHTML = sentence[0].toUpperCase() + sentence.slice(1) + ". ";
+    }
+  } else {
+    retour.innerHTML = "Je n'ai pas compris :(";
+  }
+};
+
+recognition.onerror = function (event) {
+  console.log("Erreur : " + event.error);
+};
+
 async function runDemo() {
   const vision = await FilesetResolver.forVisionTasks(
     "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@latest/wasm"
@@ -86,8 +128,24 @@ let btn = document.getElementById("off");
 var localstream;
 let camoff = document.getElementById("camoff");
 let camon = document.getElementById("camon");
+let micon = document.getElementById("micon");
+let micoff = document.getElementById("micoff");
 camoff.style.display = "none";
 camon.style.display = "block";
+micoff.style.display = "none";
+micon.style.display = "block";
+
+micon.addEventListener("click", function () {
+  micoff.style.display = "block";
+  micon.style.display = "none";
+  recognition.start();
+});
+micoff.addEventListener("click", function () {
+  micoff.style.display = "none";
+  micon.style.display = "block";
+  recognition.stop();
+});
+
 // Check if webcam access is supported.
 function hasGetUserMedia() {
   return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
@@ -224,4 +282,5 @@ function EtapeSuivante(y) {
 
   recettediv.innerText = etape;
   etapediv.innerText = "Etape " + y + "/" + max_y;
+  window.speechSynthesis.speak(new SpeechSynthesisUtterance(etape));
 }

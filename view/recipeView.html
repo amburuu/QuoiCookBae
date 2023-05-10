@@ -24,30 +24,50 @@
     <div class="containerViewRecipe">
       <div class="recipeSteps">
         <div class="titleStepSigns">
-          <div id="titleStep" class="titleStep">Etape 1:</div>
-          <div> <img src="/assets/images/like.png" alt="Ok sign" width="50px" height="50px"></div>
-          <div> <img src="/assets/images/banned.png" alt="Stop Sign" width="50px" height="50px"> </div>
+          <span id="etat"></span>
+          <div id="demos"></div>
+          <br> 
+          <div> <img src="../assets/images/like.png" alt="Ok sign" width="50px" height="50px" style="padding: 10px; margin-left: 40px;"></div>
+          <div> <img src="../assets/images/banned.png" alt="Stop Sign" width="50px" height="50px" style="padding: 10px;"> </div>
         </div>
+        <div id="titleStep" class="titleStep">Etape 0 :</div>
+
+
         <div>
-          <div id="subTitleStep" class="subTitleStep">Enrober le donut sucré au sucre avec du sucre</div>
+          <div id="subTitleStep" class="subTitleStep">Commande vocales dispo : <br>
+          "Suivant" ou "Précédent" </div>
         </div>
       </div>
       <div>
         <div class="parameterBtns">
+         <h2> Cliquez pour activer ou désactiver </h2>
           <span class="material-symbols-rounded">
-            volume_off
+            <button  class="mdc-button mdc-button--raised">
+              <span class="mdc-button__ripple"></span>
+              <span class="mdc-button__label"> <i class="bx bx-microphone bx-md" style="font-size: 24px" id="micon"></i><i
+                  class="bx bx-microphone-off bx-md" id="micoff"></i></span>
+            </button>
           </span>
-          <span class="material-symbols-rounded">
+          <!-- <span class="material-symbols-rounded">
             <button id="webcamButton" class="mdc-button mdc-button--raised">
               <span class="mdc-button__ripple"></span>
               <span class="mdc-button__label"><i class="bx bx-camera bx-md" style="font-size: 24px" id="camon"></i><i
                   class="bx bx-camera-off bx-md" id="camoff"></i></span>
             </button>
-          </span>
+          </span> -->
           <span class="material-symbols-rounded">
-            mic
+            <button id="webcamButton" class="mdc-button mdc-button--raised">
+              
+              <span class="mdc-button__ripple"></span>
+              <span class="mdc-button__label"><i class="bx bx-camera bx-md" style="font-size: 24px" id="camon"></i><i
+                  class="bx bx-camera-off bx-md" id="camoff"></i></span>
+            </button>
           </span>
+          <h1 id="retour">
+            
+          </h1>
         </div>
+     
         <div class="videoSpace">
           <i class='bx bxs-video-off'/>
           <div id="liveView" class="videoView">
