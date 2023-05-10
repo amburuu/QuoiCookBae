@@ -25,7 +25,7 @@ body {
 }
 
 .recipeSteps {
-    background-color: rgb(0, 180, 204);
+    background-color: rgba(255, 255, 255, 0.650);
     display: flex;
     flex-direction: column;
     height: 70vh;
