@@ -75,26 +75,27 @@ let recette = {
   8: "Votre Tacos 3 viandes est prêt !",
 };
 
-recognition.onend = function () {
-  recognition.start();
-};
+// while (etat_mic) {
+//   recognition.onend = function () {
+//     recognition.start();
+//   };
+// }
 
 recognition.onresult = function (event) {
   var sentence = event.results[0][0].transcript;
   console.log("Resultat : " + sentence + ".");
   console.log("Indice de confiance : " + event.results[0][0].confidence);
   if (sentence.indexOf("suivant") > -1) {
-    if (y < sizeOfArray(recette)) {
-      y++;
-      EtapeSuivante(y);
-      retour.innerHTML = sentence[0].toUpperCase() + sentence.slice(1) + ". ";
+    y++;
+    if (y > sizeOfArray(recette)) {
+      y = sizeOfArray(recette);
     }
+    EtapeSuivante(y);
+    retour.innerHTML = sentence[0].toUpperCase() + sentence.slice(1) + ". ";
   } else if (sentence.indexOf("précédent") > -1) {
-    if (y > 1) {
-      y--;
-      EtapeSuivante(y);
-      retour.innerHTML = sentence[0].toUpperCase() + sentence.slice(1) + ". ";
-    }
+    y--;
+    EtapePrecedente(y);
+    retour.innerHTML = sentence[0].toUpperCase() + sentence.slice(1) + ". ";
   } else {
     retour.innerHTML = "Je n'ai pas compris :(";
   }
@@ -130,6 +131,7 @@ let camoff = document.getElementById("camoff");
 let camon = document.getElementById("camon");
 let micon = document.getElementById("micon");
 let micoff = document.getElementById("micoff");
+var etat_mic = false;
 camoff.style.display = "none";
 camon.style.display = "block";
 micoff.style.display = "none";
@@ -139,11 +141,15 @@ micon.addEventListener("click", function () {
   micoff.style.display = "block";
   micon.style.display = "none";
   recognition.start();
+  etat_mic = true;
+  console.log("micon");
 });
 micoff.addEventListener("click", function () {
   micoff.style.display = "none";
   micon.style.display = "block";
-  recognition.stop();
+  etat_mic = false;
+  recognition.abort();
+  console.log("micoff");
 });
 
 // Check if webcam access is supported.
@@ -153,7 +159,7 @@ function hasGetUserMedia() {
 // If webcam supported, add event listener to button for when user
 // wants to activate it.
 if (hasGetUserMedia()) {
-  enableWebcamButton = document.getElementById("webcamButton");
+  enableWebcamButton = document.getElementById("camon");
   enableWebcamButton.addEventListener("click", enableCam);
 } else {
   console.warn("Application non supporté par votre navigateur");
@@ -164,6 +170,8 @@ function enableCam(event) {
     alert("Chargement du module de reconnaissance en cours...");
     return;
   }
+  let iconNoCam = document.getElementById("nocam");
+  iconNoCam.style.display = "none";
   if (webcamRunning) {
     console.log("webcam already running");
     webcamRunning = false;
@@ -199,23 +207,19 @@ var y = 0;
 async function predictWebcam() {
   if (prediction_on == false) {
     if (demande == "suivant") {
-      y = y + 1;
-    } else if (demande == "precedent") {
-      if (y != 0) {
-        y = y - 1;
+      y++;
+      if (y > sizeOfArray(recette)) {
+        y = sizeOfArray(recette);
       }
-    } else if (demande == "precedent" && y == max_y) {
-      y = y - 1;
-    }
-    if (y > sizeOfArray(recette) && demande == "suivant") {
-      recettediv.innerHTML = "Recette terminée";
-    } else {
       EtapeSuivante(y);
-      setTimeout(function () {
-        prediction_on = true;
-        predictWebcam();
-      }, 2000);
+    } else if (demande == "precedent") {
+      y--;
+      EtapePrecedente(y);
     }
+    setTimeout(function () {
+      prediction_on = true;
+      predictWebcam();
+    }, 1000);
   } else {
     const webcamElement = document.getElementById("webcam");
     // Now let's start detecting the stream.
@@ -254,10 +258,20 @@ async function predictWebcam() {
       if (trad[results.gestures[0][0].categoryName] == "Pouce en l'air") {
         prediction_on = false;
         demande = "suivant";
-        console.log("Pouce en l'air");
-      } else if (trad[results.gestures[0][0].categoryName] == "Paume ouverte") {
+      } else if (trad[results.gestures[0][0].categoryName] == "Pouce en bas") {
         prediction_on = false;
         demande = "precedent";
+      } else if (trad[results.gestures[0][0].categoryName] == "Poing fermé") {
+        prediction_on = false;
+        console.log("poing");
+        recognition.abort();
+        etat_mic = false;
+        setTimeout(function () {
+          prediction_on = true;
+          predictWebcam();
+        }, 1000);
+        micoff.style.display = "none";
+        micon.style.display = "block";
       }
     } else {
       gestureOutput.style.display = "none";
@@ -269,17 +283,24 @@ async function predictWebcam() {
     }
   }
 }
-
+console.log(sizeOfArray(recette));
 function EtapeSuivante(y) {
-  console.log(y);
-  console.log(sizeOfArray(recette));
-  if (y == 0) {
-    y = 1;
-  }
   let max_y = sizeOfArray(recette);
 
   let etape = recette[y];
 
+  recettediv.innerText = "";
+  recettediv.innerText = etape;
+  etapediv.innerText = "Etape " + y + "/" + max_y;
+  window.speechSynthesis.speak(new SpeechSynthesisUtterance(etape));
+}
+function EtapePrecedente(y) {
+  let max_y = sizeOfArray(recette);
+  if (y <= 1) {
+    y = 1;
+  }
+  let etape = recette[y];
+  recettediv.innerText = "";
   recettediv.innerText = etape;
   etapediv.innerText = "Etape " + y + "/" + max_y;
   window.speechSynthesis.speak(new SpeechSynthesisUtterance(etape));
