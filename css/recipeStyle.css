@@ -15,12 +15,13 @@ body {
     margin-top: 30px;
 }
 
-.videoSpace{
+.videoSpace {
     height: 300px;
     width: 500px;
     position: absolute;
-    right:40px;
-    bottom: 70px;
+    right: 40px;
+    bottom: 80px;
+    background-color: rgba(140, 140, 184, 0.644);
 }
 
 .recipeSteps {
@@ -32,7 +33,7 @@ body {
     width: 100%;
 }
 
-.titleStepSigns{
+.titleStepSigns {
     display: flex;
     flex-direction: row;
 }
@@ -55,11 +56,21 @@ body {
 
 .parameterBtns {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     position: absolute;
-    right: 5vw;
-    bottom: 60vh;
-    height: 20vh;
+    padding: 10px;
+    background-color: rgba(198, 198, 255, 0.644);
+    right: 40px;
+    bottom: 390px;
+    width: 480px;
+    border-radius: 6px;
+}
+
+.btnParameters {
+    border-radius: 50%;
+    background-color: #5D97D1;
+    color:white;
+    border:0;
 }
