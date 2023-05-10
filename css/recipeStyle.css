@@ -3,8 +3,7 @@
 body {
     /* background-image: url("../assets/backgrounds/recipeBg.png");
     background-repeat: no-repeat;
-    background-size: cover; */
-    background-color: rgb(197, 238, 248);
+    background-size: cover; */  
     height: 100%;
     font-family: 'Kadwa', serif;
 }
@@ -71,4 +70,11 @@ body {
     bottom: 390px;
     width: 480px;
     border-radius: 6px;
+}
+
+.btnParameters {
+    border-radius: 50%;
+    background-color: #5D97D1;
+    color:white;
+    border:0;
 }
