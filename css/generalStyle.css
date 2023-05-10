@@ -4,3 +4,11 @@
     font-family: 'Lobster', cursive;
     font-size: 3em;
 }
+
+body {
+    background-image: url("../assets/backgrounds/background-gradient.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+}

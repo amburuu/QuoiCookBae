@@ -1,11 +1,3 @@
-body {
-    background-image: url("../assets/backgrounds/descBg.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100%;
-    overflow: hidden;
-}
-
 .material-symbols-outlined {
     font-variation-settings:
     'FILL' 1,
