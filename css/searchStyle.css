@@ -48,6 +48,13 @@ h3 {
     padding: 30px;
 }
 
+.containerResultsSub{
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+    align-items: center;
+}
+
 .linkToDesc {
     text-decoration: none;
     color: rgb(0, 0, 0);
@@ -119,4 +126,8 @@ h3 {
 .iconPlay {
     color: #5D97D1;
     font-size: 3em;
+}
+
+#nocam {
+    color:rgba(0, 0, 0, 0.267);
 }
