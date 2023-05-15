@@ -48,23 +48,30 @@
 #descContainer{
     text-align: justify;
     text-justify: inter-word;
+    padding: 30px;
 }
 
 #btnsContainer{
     display: flex;
+    padding: 30px;
+width: 100%;
     flex-direction: row;
     align-items: center;
 }
 
 #btnsSubSubContainer{
+    width: 100%;
+
     display: flex;
     flex-direction: column;
     margin-right: 15px;
 }
 
 #btnsSubContainer{
+    width: 100%;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
 
 #btnsPanel{
@@ -79,7 +86,6 @@
     color:white;
     background-color: #5D97D1;
     margin-right: 10px;
-    text-decoration: none;
     justify-content: space-evenly;
     align-items: center;
     padding: 5px;
@@ -93,8 +99,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    text-decoration: none;
     color: white;
+}
+.btnplay{
+    display: flex;
+    flex-direction: row;
+    color:white;
+    background-color: #A8E1DF;
+    margin-right: 10px;
+    text-decoration: none;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 5px;
+    width: 80px;
+    border-radius: 50px;
 }
 
 #iconPlay{
@@ -102,7 +120,7 @@
 }
 
 #infosContainer{
-    padding: 3% 5% 3% 5%;
+    /* padding: 3% 5% 3% 5%; */
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -111,10 +129,11 @@
 .infosSubContainer{
     background-color: white;
     width: 300px;
-    height: 300px;
+    /* height: 200px; */
     display: flex;
     flex-direction: column;
     padding-left: 25px;
     padding-top: 20px;
+    padding-bottom: 10px;
 
 }
