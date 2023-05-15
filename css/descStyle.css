@@ -114,6 +114,9 @@ width: 100%;
     width: 80px;
     border-radius: 50px;
 }
+.btnplay a:visited{
+    color: white !important;
+}
 
 #iconPlay{
     font-size: 3em
