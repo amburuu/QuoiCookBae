@@ -122,3 +122,14 @@ h3 {
     color: #5D97D1;
     font-size: 3em;
 }
+
+#listeItemsSearched{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.imgRecette {
+    width: 300px;
+    height: 200px;
+}

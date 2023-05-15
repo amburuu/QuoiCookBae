@@ -26,8 +26,8 @@
         </div>
       </div>
 
-      <!-- ITEM 1 -->
-      <div class="listeItemsSearched">
+      <!-- List ITEMs -->
+      <div id="listeItemsSearched">
 
       </div>
 
@@ -39,20 +39,36 @@
 
 <script>
 
-  var elementListItemSearched = document.getElementsByClassName('listeItemsSearched');
-  const subDiv = document.createElement("div");
+  var elementListItemSearched = document.getElementById('listeItemsSearched');
+  var data = "";
+  function chargerRecette() {
+    const xhr = new XMLHttpRequest();
+    const url = "../assets/js/recette.json";
+    xhr.open("GET", url, true);
+    xhr.addEventListener("load", function () {
+      data = JSON.parse(xhr.responseText);
+      console.log(data);
+      chargerDonnees();
+    });
+    xhr.send(null);
+    console.log("Chargement effectué");
+  }
 
-  // var jsonRecipes = jsonObj['members'];
-  
-  // for (var i = 0; i < jsonRecipes.length; i++) {
-    var title = "TEST"
-    var time = "12"
-    var imgSrc = "../assets/images/ramen.jpg"
 
-    var item = `
-        <div id="item1" class="containerItem">
+  window.addEventListener("load", chargerRecette);
+
+  function chargerDonnees() {
+    Object.values(data).map((i) => {
+
+      const subDiv = document.createElement("div");
+      var title = i.name;
+      var time = i.Temps.total;
+      var imgSrc = `../assets/images/recettes/${i.srcImg}.jpg`;
+
+      var item = `
+        <div class="containerItem">
           <span class="material-symbols-rounded iconHeart"> favorite </span>
-          <img src="${imgSrc}" alt="Ramen pic" />
+          <img class="imgRecette" src="${imgSrc}" />
           <div class="descCont">
             <div class="titleDiv">
               <div>${title}</div>
@@ -71,7 +87,7 @@
                   <span class="material-symbols-rounded iconTimer">
                     av_timer
                   </span>
-                  <div>${time} minutes</div>
+                  <div>${time}</div>
                 </div>
                 <div class="gradeDiv">
                   <span class="material-symbols-rounded iconStar">
@@ -101,9 +117,11 @@
         </div>
     `
 
-    subDiv.innerHTML = item;
-    document.body.append(subDiv)
+      subDiv.innerHTML = item;
+      console.log(elementListItemSearched);
+      elementListItemSearched.appendChild(subDiv);
+    })
+  }
 
-  // }
 
 </script>
