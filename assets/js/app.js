@@ -304,7 +304,7 @@ async function predictWebcam() {
     }
   }
 }
-
+console.log(recettesJson);
 function EtapeSuivante(y) {
   console.log(y);
   let max_y = sizeOfArray(recettesJson[id_recette].etapes);
