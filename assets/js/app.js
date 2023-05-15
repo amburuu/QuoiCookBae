@@ -13,7 +13,25 @@ function $_GET(param) {
   }
   return vars;
 }
-console.log($_GET("mode"));
+
+function chargerRecette(callback) {
+  var xobj = new XMLHttpRequest();
+  xobj.overrideMimeType("application/json");
+  xobj.open("GET", "../assets/js/recette.json", true);
+  xobj.onreadystatechange = function () {
+    if (xobj.readyState == 4 && xobj.status == "200") {
+      callback(xobj.responseText);
+    }
+  };
+  xobj.send(null);
+}
+
+const recetteFromjson = await chargerRecette(function (response) {
+  var recettesJson = JSON.parse(response);
+  console.log(recettesJson[1]);
+  return recettesJson;
+});
+
 let recettediv = document.getElementById("step");
 let etapediv = document.getElementById("titleStep");
 
@@ -298,9 +316,9 @@ async function predictWebcam() {
 console.log(sizeOfArray(recette));
 function EtapeSuivante(y) {
   console.log(y);
-  let max_y = sizeOfArray(recette);
+  let max_y = sizeOfArray(recetteFromjson[1].etapes);
 
-  let etape = recette[y];
+  let etape = recetteFromjson[0].etapes[y];
 
   recettediv.innerText = "";
   recettediv.innerText = etape;
@@ -310,11 +328,11 @@ function EtapeSuivante(y) {
 function EtapePrecedente(y) {
   console.log(y);
 
-  let max_y = sizeOfArray(recette);
+  let max_y = sizeOfArray(recetteFromjson[0].etapes);
   if (y <= 1) {
     y = 1;
   }
-  let etape = recette[y];
+  let etape = recetteFromjson[1].etapes[y];
   recettediv.innerText = "";
   recettediv.innerText = etape;
   etapediv.innerText = "Etape " + y + "/" + max_y;
