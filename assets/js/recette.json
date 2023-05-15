@@ -69,36 +69,31 @@
         "preparation":"15 min", 
         "Cuisson":"5 min", 
         "total" :"20 min"
-}
+},
+    "srcImg":"brochette"
       },
 
       "4":{
         "id":"4",
         "name" : "Samoussas au boeuf",
         "description" : "Beignet croustillant, de forme triangulaire, fait d'une fine pâte de farine de blé enrobant une farce à base de légumes, de viande, de poisson ou de fromage.",
-        "listeIngredients" : ["200 gramen","1 c. à soupe pâte miso","2 c à soupe de Vert d'oignon frais","1 oeuf mollet mariné","50g pousses de bambou","2 tranches de Narutomaki","3 tranches porc Chashu","1 c. à café d'huile de sésame","1 cube de bouillon de porc","1 feuille d'Algue nori"],
-        "listeUstensiles" : ["casserole","grand bol","bol","cuillère","couteu"],
+        "listeIngredients" : ["1 carotte","1 oignon","2 c à c de curry","1 c à c de gingembre en poudre","huile d'olive","huile de friture","5 feuilles de brick","200g de boeuf haché","1 gousse d'ail","5 c à s de sauce soja (sucré de préférence)","1 jaune d'oeuf"],
+        "listeUstensiles" : ["3 poêle","1 pinceau","1 cuillère en bois","1 dénoyauteur"],
        "etapes" : {"1":"Faire cuire les nouilles comme indiqué sur l'emballage et réserver dans un bol",
-                    "2":"En parallèle, faire bouillir 600g d'eau et y faire fondre le bouillon",
-                    "3":"Délayer la pâte miso avec un peu de bouillon chaud",
-                    "4":"Ajouter la pâte miso au bouillon",
-                    "5":"Reprendre les nouilles réservées dans un grand bol",
-                    "6":"Ajouter la feuille d’algue nori coupée en 3",
-                    "7":"Ajouter les tranches de porc chashu",
-                    "8":"Ajouter les pousses de bambou",
-                    "9":"Ajouter l’oeuf coupé en 2",
-                    "10":"Ajouter le narutomaki",
-                    "11":"Ajouter le vert d’oignon",
-                    "12":"Recouvrir de bouillon très chaud",
-                    "13":"Parsemer d’huile de sésame",
-                    "14":"Itadakimasu !"
-    },
+                    "2":"Ajouter la viande de bœuf et laisser dorer un peu.",
+                    "3":"Assaisonner avec le curry, le gingembre puis ajouter la sauce soja. Bien mélanger et laisser cuire à feu doux 2 à 3 min.",
+                    "4":"Répartir la farce dans les feuilles de brick (2 samoussas par feuille) et procéder au pliage (souvent expliqué sur les paquets de feuilles de brick). ",
+                    "5":"Coller le dernier revers avec un jaune d'œuf.",
+                    "6":"Faire cuire dans un fond d'huile de friture, 2 min de chaque côté.",
+                    "7":"En fin de cuisson, déposer les samoussas sur une assiette avec du papier absorbant afin de retirer l'excès d'huile de cuisson. Bon appétit !"
+      },       
     "Temps": {
-        "preparation":"10 min", 
-        "Cuisson":"5 heures", 
-        "audio" :"10 min"
-}
+        "preparation":"15 min", 
+        "Cuisson":"15 min", 
+        "audio" :"30 min"
+},
+    "srcImg":"samoussa"
       }
-
+    
       
   }
