@@ -8,7 +8,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-let recettediv = document.getElementById("subTitleStep");
+let recettediv = document.getElementById("step");
 let etapediv = document.getElementById("titleStep");
 
 const SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
@@ -161,17 +161,18 @@ function hasGetUserMedia() {
 if (hasGetUserMedia()) {
   enableWebcamButton = document.getElementById("camon");
   enableWebcamButton.addEventListener("click", enableCam);
+  let camoffBTN = document.getElementById("camoff");
+  camoffBTN.addEventListener("click", enableCam);
 } else {
   console.warn("Application non supporté par votre navigateur");
 }
 // Enable the live webcam view and start detection.
+let iconNoCam = document.getElementById("nocam");
 function enableCam(event) {
   if (!gestureRecognizer) {
     alert("Chargement du module de reconnaissance en cours...");
     return;
   }
-  let iconNoCam = document.getElementById("nocam");
-  iconNoCam.style.display = "none";
   if (webcamRunning) {
     console.log("webcam already running");
     webcamRunning = false;
@@ -181,14 +182,15 @@ function enableCam(event) {
     const tracks = mediaStream.getTracks();
     tracks[0].stop();
     videodiv.style.display = "none";
-
     camoff.style.display = "none";
+    iconNoCam.style.display = "block";
   } else {
     console.log("webcam not running");
     videodiv.style.display = "block";
     webcamRunning = true;
     camon.style.display = "none";
     camoff.style.display = "block";
+    iconNoCam.style.display = "none";
   }
   // getUsermedia parameters.
   const constraints = {
@@ -213,7 +215,11 @@ async function predictWebcam() {
       }
       EtapeSuivante(y);
     } else if (demande == "precedent") {
-      y--;
+      if (y > 1) {
+        y--;
+      } else {
+        y = 1;
+      }
       EtapePrecedente(y);
     }
     setTimeout(function () {
@@ -285,6 +291,7 @@ async function predictWebcam() {
 }
 console.log(sizeOfArray(recette));
 function EtapeSuivante(y) {
+  console.log(y);
   let max_y = sizeOfArray(recette);
 
   let etape = recette[y];
@@ -295,6 +302,8 @@ function EtapeSuivante(y) {
   window.speechSynthesis.speak(new SpeechSynthesisUtterance(etape));
 }
 function EtapePrecedente(y) {
+  console.log(y);
+
   let max_y = sizeOfArray(recette);
   if (y <= 1) {
     y = 1;
