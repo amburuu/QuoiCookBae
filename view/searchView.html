@@ -40,15 +40,16 @@
 <script>
 
   var elementListItemSearched = document.getElementsByClassName('listeItemsSearched');
+  const subDiv = document.createElement("div");
 
   // var jsonRecipes = jsonObj['members'];
-
+  
   // for (var i = 0; i < jsonRecipes.length; i++) {
-  var title = "TEST"
-  var time = "12"
-  var imgSrc = "../assets/images/ramen.jpg"
+    var title = "TEST"
+    var time = "12"
+    var imgSrc = "../assets/images/ramen.jpg"
 
-  var item = `
+    var item = `
         <div id="item1" class="containerItem">
           <span class="material-symbols-rounded iconHeart"> favorite </span>
           <img src="${imgSrc}" alt="Ramen pic" />
@@ -100,8 +101,8 @@
         </div>
     `
 
-  elementListItemSearched.innerHTML.replace(item)
-  //document.body.innerHTML = item
+    subDiv.innerHTML = item;
+    document.body.append(subDiv)
 
   // }
 
