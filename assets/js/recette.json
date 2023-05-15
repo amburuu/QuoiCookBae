@@ -1,0 +1,31 @@
+{
+    "1":{
+        "name" : "Ramens façon Naruto",
+        "description" : "Le ramen est à la base un plat de nouilles, accompagnées par une soupe qui donne le goût à celles-ci. C’est un élément incontournable de la gastronomie japonaise, qui a la particularité de se renouveler sans cesse depuis quelques décennies.",
+        "listeIngredients" : ["200 gramen","1 c. à soupe pâte miso","2 c à soupe de Vert d'oignon frais","1 oeuf mollet mariné","50g pousses de bambou","2 tranches de Narutomaki","3 tranches porc Chashu","1 c. à café d'huile de sésame","1 cube de bouillon de porc","1 feuille d'Algue nori"],
+        "listeUstensiles" : ["casserole","grand bol","bol","cuillère","couteu"],
+       "etapes" : {"1":"Faire cuire les nouilles comme indiqué sur l'emballage et réserver dans un bol",
+                    "2":"En parallèle, faire bouillir 600g d'eau et y faire fondre le bouillon",
+                    "3":"Délayer la pâte miso avec un peu de bouillon chaud",
+                    "4":"Ajouter la pâte miso au bouillon",
+                    "5":"Reprendre les nouilles réservées dans un grand bol",
+                    "6":"Ajouter la feuille d’algue nori coupée en 3",
+                    "7":"Ajouter les tranches de porc chashu",
+                    "8":"Ajouter les pousses de bambou",
+                    "9":"Ajouter l’oeuf coupé en 2",
+                    "10":"Ajouter le narutomaki",
+                    "11":"Ajouter le vert d’oignon",
+                    "12":"Recouvrir de bouillon très chaud",
+                    "13":"Parsemer d’huile de sésame",
+                    "14":"Itadakimasu !"
+    },
+    "Temps": {
+        "preparation":"10 min", 
+        "Cuisson":"5 heures", 
+        "audio" :"10 min"
+}
+      }
+
+
+  
+  }
