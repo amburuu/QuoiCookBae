@@ -13,24 +13,36 @@ function $_GET(param) {
   }
   return vars;
 }
+var recettesJson;
 
-function chargerRecette(callback) {
-  var xobj = new XMLHttpRequest();
-  xobj.overrideMimeType("application/json");
-  xobj.open("GET", "../assets/js/recette.json", true);
-  xobj.onreadystatechange = function () {
-    if (xobj.readyState == 4 && xobj.status == "200") {
-      callback(xobj.responseText);
-    }
-  };
-  xobj.send(null);
-}
+// function chargerRecette() {
+//   var xobj = new XMLHttpRequest();
+//   xobj.overrideMimeType("application/json");
+//   xobj.open("GET", "../assets/js/recette.json", true);
+//   xobj.onreadystatechange = function () {
+//     if (xobj.readyState == 4 && xobj.status == "200") {
+//       recettesJson = JSON.parse(xobj.responseText);
+//       return recettesJson;
+//     }
+//   };
+//   xobj.send(null);
+// }
+//xhr to load json and assign to variable
 
-const recetteFromjson = await chargerRecette(function (response) {
-  var recettesJson = JSON.parse(response);
-  console.log(recettesJson[1]);
-  return recettesJson;
-});
+let id_recette = $_GET("id");
+var recettesJson = (function () {
+  var json = null;
+  $.ajax({
+    async: false,
+    global: false,
+    url: "../assets/js/recette.json",
+    dataType: "json",
+    success: function (data) {
+      json = data;
+    },
+  });
+  return json;
+})();
 
 let recettediv = document.getElementById("step");
 let etapediv = document.getElementById("titleStep");
@@ -99,12 +111,6 @@ let recette = {
   8: "Votre Tacos 3 viandes est prêt !",
 };
 
-// while (etat_mic) {
-//   recognition.onend = function () {
-//     recognition.start();
-//   };
-// }
-
 recognition.onresult = function (event) {
   var sentence = event.results[0][0].transcript;
   console.log("Resultat : " + sentence + ".");
@@ -156,6 +162,7 @@ let camon = document.getElementById("camon");
 let micon = document.getElementById("micon");
 let micoff = document.getElementById("micoff");
 var etat_mic = false;
+
 camoff.style.display = "none";
 camon.style.display = "block";
 micoff.style.display = "none";
@@ -265,26 +272,11 @@ async function predictWebcam() {
     webcamElement.style.height = videoHeight;
     canvasElement.style.width = videoWidth;
     webcamElement.style.width = videoWidth;
-    // if (results.landmarks) {
-    //     for (const landmarks of results.landmarks) {
-    //         drawConnectors(canvasCtx, landmarks, HAND_CONNECTIONS, {
-    //             color: "#00FF00",
-    //             lineWidth: 5
-    //         });
-    //         drawLandmarks(canvasCtx, landmarks, { color: "#FF0000", lineWidth: 2 });
-    //     }
-    // }
+
     canvasCtx.restore();
     if (results.gestures.length > 0) {
       gestureOutput.style.display = "block";
       gestureOutput.style.width = videoWidth;
-      // gestureOutput.innerText =
-      //   "Geste en cours: " +
-      //   trad[results.gestures[0][0].categoryName] +
-      //   "\n Précision: " +
-      //   Math.round(parseFloat(results.gestures[0][0].score) * 100) +
-      //   "%";
-
       if (trad[results.gestures[0][0].categoryName] == "Pouce en l'air") {
         prediction_on = false;
         demande = "suivant";
@@ -293,13 +285,12 @@ async function predictWebcam() {
         demande = "precedent";
       } else if (trad[results.gestures[0][0].categoryName] == "Poing fermé") {
         prediction_on = false;
-        console.log("poing");
         recognition.abort();
         etat_mic = false;
         setTimeout(function () {
           prediction_on = true;
           predictWebcam();
-        }, 1000);
+        }, 2000);
         micoff.style.display = "none";
         micon.style.display = "block";
       }
@@ -313,12 +304,12 @@ async function predictWebcam() {
     }
   }
 }
-console.log(sizeOfArray(recette));
+
 function EtapeSuivante(y) {
   console.log(y);
-  let max_y = sizeOfArray(recetteFromjson[1].etapes);
+  let max_y = sizeOfArray(recettesJson[id_recette].etapes);
 
-  let etape = recetteFromjson[0].etapes[y];
+  let etape = recettesJson[id_recette].etapes[y];
 
   recettediv.innerText = "";
   recettediv.innerText = etape;
@@ -327,12 +318,11 @@ function EtapeSuivante(y) {
 }
 function EtapePrecedente(y) {
   console.log(y);
-
-  let max_y = sizeOfArray(recetteFromjson[0].etapes);
+  let max_y = sizeOfArray(recettesJson[id_recette].etapes);
   if (y <= 1) {
     y = 1;
   }
-  let etape = recetteFromjson[1].etapes[y];
+  let etape = recettesJson[id_recette].etapes[y];
   recettediv.innerText = "";
   recettediv.innerText = etape;
   etapediv.innerText = "Etape " + y + "/" + max_y;
