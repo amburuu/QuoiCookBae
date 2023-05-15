@@ -90,7 +90,7 @@
     "Temps": {
         "preparation":"15 min", 
         "Cuisson":"15 min", 
-        "audio" :"30 min"
+        "total" :"30 min"
 },
     "srcImg":"samoussa"
       }
