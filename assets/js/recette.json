@@ -79,7 +79,7 @@
         "description" : "Beignet croustillant, de forme triangulaire, fait d'une fine pâte de farine de blé enrobant une farce à base de légumes, de viande, de poisson ou de fromage.",
         "listeIngredients" : ["1 carotte","1 oignon","2 c à c de curry","1 c à c de gingembre en poudre","huile d'olive","huile de friture","5 feuilles de brick","200g de boeuf haché","1 gousse d'ail","5 c à s de sauce soja (sucré de préférence)","1 jaune d'oeuf"],
         "listeUstensiles" : ["3 poêle","1 pinceau","1 cuillère en bois","1 dénoyauteur"],
-       "etapes" : {"1":"Faire cuire les nouilles comme indiqué sur l'emballage et réserver dans un bol",
+       "etapes" : {"1":"Dans une poêle à feu vif, faire revenir l'oignon, l'ail et la carotte hachés dans de l'huile d'olive.",
                     "2":"Ajouter la viande de bœuf et laisser dorer un peu.",
                     "3":"Assaisonner avec le curry, le gingembre puis ajouter la sauce soja. Bien mélanger et laisser cuire à feu doux 2 à 3 min.",
                     "4":"Répartir la farce dans les feuilles de brick (2 samoussas par feuille) et procéder au pliage (souvent expliqué sur les paquets de feuilles de brick). ",
