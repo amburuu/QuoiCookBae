@@ -31,27 +31,20 @@
         "id":"2",
         "name" : "Burger Maison",
         "description" : "Le burger est un plat américain populaire dans le monde entier, composé d'un pain rond coupé en deux, généralement grillé ou toasté, avec un steak haché cuit et garni de divers ingrédients tels que du fromage, de la laitue, des tomates, de l'oignon, des cornichons, de la sauce ketchup, de la moutarde et de la mayonnaise.",
-        "listeIngredients" : ["200 gramen","1 c. à soupe pâte miso","2 c à soupe de Vert d'oignon frais","1 oeuf mollet mariné","50g pousses de bambou","2 tranches de Narutomaki","3 tranches porc Chashu","1 c. à café d'huile de sésame","1 cube de bouillon de porc","1 feuille d'Algue nori"],
-        "listeUstensiles" : ["casserole","grand bol","bol","cuillère","couteu"],
-       "etapes" : {"1":"Faire cuire les nouilles comme indiqué sur l'emballage et réserver dans un bol",
-                    "2":"En parallèle, faire bouillir 600g d'eau et y faire fondre le bouillon",
-                    "3":"Délayer la pâte miso avec un peu de bouillon chaud",
-                    "4":"Ajouter la pâte miso au bouillon",
-                    "5":"Reprendre les nouilles réservées dans un grand bol",
-                    "6":"Ajouter la feuille d’algue nori coupée en 3",
-                    "7":"Ajouter les tranches de porc chashu",
-                    "8":"Ajouter les pousses de bambou",
-                    "9":"Ajouter l’oeuf coupé en 2",
-                    "10":"Ajouter le narutomaki",
-                    "11":"Ajouter le vert d’oignon",
-                    "12":"Recouvrir de bouillon très chaud",
-                    "13":"Parsemer d’huile de sésame",
-                    "14":"Itadakimasu !"
+        "listeIngredients" : ["1 petit pain rond au sésame","100g haché de boeuf","0.25 oignon rouge","0.25 oignon blanc","1 tranches Cheddar(ou fromage à Burger)","0.25 belle tomate","25g Roquette","1 c. à café mayonnaise","0.25 filet d'huile", "sel", "poivre"],
+        "listeUstensiles" : ["bol","couteau","papier film","passoir","poêle"],
+       "etapes" : {"1":"Émincez finement l'oignon blanc. Placez la viande hachée dans un bol, mélangez-là avec l'oignon, salez, poivrez.",
+                    "2":"Faconnez des steacks de la taille des pains à burger, enrobez-les de papier film et placez-les au frais 30 minutes.",
+                    "3":"Pelez l’oignon rouge puis émincez-le. Rincez et essorez la roquette. Rincez la tomate puis coupez-la en rondelles.",
+                    "4":"Faites chauffer l’huile dans une poêle et faites cuire les steaks 3 à 4 min de chaque côté, selon votre goût. En fin de cuisson, salez, poivrez, disposez 1 tranche de cheddar sur chaque steak et laissez-la légèrement fondre.",
+                    "5":"Fendez les petits pains en 2 et toastez-les légèrement. Montez les burgers : tartinez chaque moitié de pain de sauce puis garnissez avec la viande, les rondelles de tomate, l’oignon ciselé et les feuilles de roquette. Refermez les burgers et servez aussitôt.",
+                    "6":"MIAMIAMIAM NOMNOMNOM MY BIG BURGER",
+                    
     },
     "Temps": {
-        "preparation":"10 min", 
-        "Cuisson":"5 heures", 
-        "audio" :"10 min"
+        "preparation":"15 min", 
+        "Cuisson":"10 min", 
+        "audio" :"3 min"
 }
       },
 
